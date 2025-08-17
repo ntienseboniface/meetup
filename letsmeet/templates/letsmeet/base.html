@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome To Meetops</title>
+        <link rel="shortcut icon" href="/img/BABA LAWAN GRASSROOTS EMPOWERMENT INITIATIVE LOGO FAVICON.fw.png" type="img/x-icon">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="CONTACT BABA LAWAN GRASSROOTS EMPOWERMENT INITIATIVE" name="keywords">
+        <meta content="CONTACT BABA LAWAN GRASSROOTS EMPOWERMENT INITIATIVE" name="description">
+
+        <!-- Google Web Fonts -->
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet">  -->
+
+        <!-- Icon Font Stylesheet -->
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"> -->
+
+        <!-- Libraries Stylesheet -->
+        <!-- <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet"> -->
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link rel="stylesheet" href="{% static 'letsmeet/css/bootstrap.min.css' %}">
+
+        <!-- Template Stylesheet -->
+        <link rel="stylesheet" href="{% static 'letsmeet/css/style.css' %}">
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" role="status"></div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar start -->
+
+        
+        <div class="container-fluid fixed-top px-0">
+            <div class="container px-0">
+                <div class="topbar">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-8">
+                            <div class="topbar-info d-flex flex-wrap">
+                                <a href="#" class="text-light me-4"><i class="fas fa-envelope text-white me-2"></i>info@meetop.com</a>
+                                <a href="#" class="text-light"><i class="fas fa-phone-alt text-white me-2"></i>+234 811 961 5438</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="topbar-icon d-flex align-items-center justify-content-end">
+                                <a href="https://web.facebook.com/babalawanempowerment" class="btn-square text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="btn-square text-white me-2"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.instagram.com/babalawanempowerment/" class="btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="btn-square text-white me-2"><i class="fab fa-pinterest"></i></a>
+                                <a href="#" class="btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Authenticated User -->
+                 {% if user.is_authenticated %}
+                <nav class="navbar navbar-light bg-light navbar-expand-xl">
+                    <a href="{% url 'home' %}" class="navbar-brand ms-3">
+                        <h1 class="text-primary display-5"><img src="{% static 'letsmeet/img/meetoplogo.png'%}" width="200px"></h1>
+                    </a>
+                    <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars text-primary"></span>
+                    </button>
+                    <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto">
+                            <a href="" class="nav-item nav-link active">Dashboard</a>
+                            <a href="" class="nav-item nav-link">Your Meetups</a>
+    
+                            <a href="" class="nav-item nav-link">Support</a>
+                            
+                            
+                            
+                            <a href="" class="nav-item nav-link">Edit Profile</a>
+                        </div>
+                        <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                            <a href="{% url 'logout' %}" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">LOGOUT</a>
+                            <a href="{% url 'create_meetop' %}" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">CREATE MEETUP</a>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Authenticated User ends-->
+
+                 {% else %}
+
+            <!-- unauthenticated -->
+             <nav class="navbar navbar-light bg-light navbar-expand-xl">
+                    <a href="{% url 'home' %}" class="navbar-brand ms-3">
+                        <h1 class="text-primary display-5"><img src="{% static 'letsmeet/img/meetoplogo.png'%}" width="200px"></h1>
+                    </a>
+                    <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars text-primary"></span>
+                    </button>
+                    <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto">
+                            <a href="" class="nav-item nav-link active">Home</a>
+                            <a href="" class="nav-item nav-link">About Us</a>
+                            <a href="" class="nav-item nav-link">Contact Us</a>
+                        </div>
+                        <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                            <a href="{% url 'login' %}" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">LOGIN</a>
+                            <a href="{% url 'register' %}" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">REGISTER</a>
+                        </div>
+                    </div>
+                </nav>
+                <!-- unauthenticated ends-->
+                  {% endif %}
+            </div>
+        </div>
+        <!-- Navbar End -->
+        {% if user.is_authenticated %}
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-6 mb-4">Welcome {{ user.name }}!</h1>
+                <p class="fs-5 text-white mb-4">Find meetups near you</p>
+                <ol class="breadcrumb justify-content-center mb-0">
+                    
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+
+       {% else %}
+       <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4">Meetop By Topweb</h1>
+                <p class="fs-5 text-white mb-4">Find meetups near you</p>
+                <ol class="breadcrumb justify-content-center mb-0">
+                    
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+         {% endif %}
+
+         <!-- Meetops -->
+        <div class="container-fluid causes py-5">
+            <div class="container py-5">
+                <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+                    <h5 class="text-uppercase text-primary">Featured Meetups</h5>
+                </div>
+                <div class="row g-4">
+                    {% for meetup in meetups %}
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="causes-item">
+                            <div class="causes-img">
+                                <img src="{{meetup.image.url}}" class="img-fluid w-100" alt="Image">
+                                <div class="causes-link pb-2 px-3">
+                                    <small class="text-white"><i class="fas fa-female text-primary me-2"></i></small>
+                                    <small class="text-white"><i class="fa fa-exclamation-circle text-primary me-2"></i>{{ meetup.state }}</small>
+                                </div>
+                                <div class="causes-dination p-2">
+                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="">{{ meetup.meetup_date }}</a>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                    <span>16%</span>
+                                </div>
+                            </div>
+                            <div class="causes-content p-4">
+                                <h4 class="mb-3">{{ meetup.title }}</h4>
+                                <p class="mb-4 text-light">{{ meetup.description }}</p>
+                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="{% url 'meetop-details' meetup.slug %}">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                 <!-- End Meetops -->
+
+                <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+                    <h5 class="text-uppercase text-primary"></h5>
+                </div>
+
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-4 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Meetop 2025</a> All right reserved.</span>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <a href="https://web.facebook.com/babalawanempowerment" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/babalawanempowerment/" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-pinterest"></i></a>
+                            <a href="#" class="btn-hover-color btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center text-md-end text-body">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Developed by <a class="border-bottom" href="https://topwebtechnologies.net/">Topweb Technologies</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="{% static 'letsmeet/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        
+        <!-- Template Javascript -->
+        <script src="{% static 'letsmeet/js/main.js' %}"></script>
+    </body>
+</html>

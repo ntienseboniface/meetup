@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ meetup.title }}</title>
+</head>
+<body>
+    
+    <img src="{{meetup.image.url}}" alt="meetop.title" width="400px">
+    <h1>{{ meetup.title }}</h1>
+    <p><strong>State:</strong> {{ meetup.state }}</p>
+    <p><strong>Description:</strong> {{ meetup.description }}</p>
+    <p><strong>Date:</strong> {{ meetup.meetup_date }}</p>
+    <p><strong>Time:</strong> {{ meetup.meetup_time }}</p>
+    <a href="{% url 'home' %}">← Back to list</a>
+</body>
+</html>

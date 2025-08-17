@@ -1,0 +1,23 @@
+ <h1>Upcoming Meetups</h1>
+<button class="btn"><a href="{% url 'register' %}">REGISTER</a></button> OR  
+<button class="btn"><a href="{% url 'login' %}">LOGIN</a></button>
+ 
+    <table border="1">
+        <tr>
+            <th>S/N</th>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Detail</th>
+        </tr>
+    {% for meetup in meetups %}
+
+    <tr>
+        <td>{{meetup.id}}</td>
+        <td>{{meetup.title}}</td>
+        <td>{{meetup.state}}</td>
+        <td><a href="{% url 'meetop-details' meetup.slug %}">View Details</a></td>
+    </tr>
+    
+    {% endfor %}
+
+    </table>

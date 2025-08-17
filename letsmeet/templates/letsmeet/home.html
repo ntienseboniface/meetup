@@ -1,0 +1,41 @@
+{% extends "letsmeet/base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- ===== HERO SECTION ===== -->
+<section class="bg-light py-5 text-center">
+    <h1 class="display-5 fw-bold">Welcome to Meetop</h1>
+    <p class="lead">
+        Discover, create, and join meetups that matter.
+    </p>
+    {% if not user.is_authenticated %}
+        <a href="{% url 'register' %}" class="btn btn-primary btn-lg">Get Started</a>
+    {% endif %}
+</section>
+
+<!-- ===== FEATURED MEETUPS ===== -->
+<section class="py-5">
+  <div class="container">
+      <h2 class="mb-4 text-center">Featured Meetups</h2>
+      <div class="row g-4">
+          {% for m in featured %}
+          <div class="col-md-4">
+              <div class="card h-100 shadow-sm">
+                  {% if m.image %}
+                  <img src="{{ m.image.url }}" class="card-img-top" alt="{{ m.title }}">
+                  {% endif %}
+                  <div class="card-body">
+                      <h5 class="card-title">{{ m.title }}</h5>
+                      <p class="card-text">{{ m.description|truncatewords:25 }}</p>
+                      <a href="{% url 'meetop_detail' m.slug %}" class="btn btn-outline-primary">Details</a>
+                  </div>
+              </div>
+          </div>
+          {% empty %}
+          <p class="text-center">No meetups yet. Check back soon!</p>
+          {% endfor %}
+      </div>
+  </div>
+</section>
+{% endblock %}
