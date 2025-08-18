@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{title}}</title>
 </head>
 <body>
     <h2 class="mb-4">{% if create %}Create a New Meetup{% else %}Edit Meetup{% endif %}</h2>
 
-<form method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
+<form method="post" action="{% url 'create_meetop' %}" enctype="multipart/form-data" class="card p-4 shadow-sm">
+
   {% csrf_token %}
   {% for field in form %}
     <div class="mb-3">

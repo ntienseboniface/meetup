@@ -75,7 +75,7 @@ def meetop_creation(request):
             meetup.organizer_email = request.user.email
             meetup.save()
             messages.success(request, 'Meetup created!')
-            return redirect('meetop_detail', slug=meetup.slug)
+            return redirect('meetop-details', slug=meetup.slug)
     else:
         form = MeetopForm()
     return render(request, 'letsmeet/createmeetop.html', {'form': form, 'create': True})
